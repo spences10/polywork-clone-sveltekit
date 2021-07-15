@@ -38,6 +38,9 @@
             activityTags {
               id
               name
+              badgeColour {
+                hex
+              }
             }
           }
         }
@@ -74,10 +77,11 @@
 
 <img alt={banner.altText} src={banner.url} class="h-96 w-full" />
 
+<!-- Containers -->
 <div class="mx-auto -mt-72 max-w-7xl px-4 relative sm:px-6 lg:px-8">
   <div class="mx-auto max-w-3xl">
     <!-- Basics Card -->
-    <div class="bg-white my-16 card border">
+    <div class="bg-white border my-16 card shadow">
       <div class="">
         <figure class="px-10 pt-10">
           <div class="avatar">
@@ -99,10 +103,10 @@
           </ul>
           <div>
             {#if polyworkUserBadges}
-              <div class="flex flex-wrap break-words mt-5 relative">
+              <div class="flex flex-wrap mt-5 break-words relative">
                 {#each polyworkUserBadges as { name }}
                   <div
-                    class="border rounded-full py-2 px-4 mr-2 mb-2 font-medium"
+                    class="border rounded-full font-medium mr-2 mb-2 py-2 px-4"
                   >
                     {name}
                   </div>
@@ -119,26 +123,30 @@
       </div>
     </div>
 
-    <hr />
+    <div class="divider opacity-10 mb-10" />
 
     <!-- Activities List -->
     {#if activityDetails}
       {#each activityDetails as activity}
-        <section class="mb-4 mt-16 card border">
+        <section class="border mb-4 card shadow">
           <div class="card-body">
             {#if activity.activityTags}
-              {#each activity.activityTags as { name }}
-                <div class="flex flex-wrap break-words relative bg-">
+              {#each activity.activityTags as { name, badgeColour }}
+                <div class="flex flex-wrap break-words relative">
                   <div
-                    class="border py-2 px-4 mr-2 mb-2 text-sm font-semibold w-auto"
+                    class="border font-semibold mr-2 text-sm mb-2 w-auto py-2 px-4"
                   >
-                    <p>{name}</p>
+                    <p style="color:{badgeColour.hex}">{name}</p>
                   </div>
                 </div>
               {/each}
             {/if}
-            <p>{format(new Date(activity.date), 'do MMM yyy')}</p>
-            <div>{@html activity.description.html}</div>
+            <p class="font-semibold mb-5 opacity-75">
+              {format(new Date(activity.date), 'do MMM yyy')}
+            </p>
+            <div class="prose">
+              {@html activity.description.html}
+            </div>
 
             <div />
           </div>
