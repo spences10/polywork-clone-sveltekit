@@ -96,9 +96,12 @@
             class="flex space-x-2 text-left leading-relaxed opacity-75"
           >
             <li>@{username}</li>
+            <span class="opacity-75">&bull;</span>
             <li>{jobTitle},</li>
             <li>{company}</li>
+            <span class="opacity-75">&bull;</span>
             <li>{pronoun}</li>
+            <span class="opacity-75">&bull;</span>
             <li>{location}</li>
           </ul>
           <div>
