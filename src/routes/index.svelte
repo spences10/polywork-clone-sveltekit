@@ -1,7 +1,8 @@
 <script context="module">
   import { format } from 'date-fns'
   import { gql, GraphQLClient } from 'graphql-request'
-  export async function load(context) {
+
+  export async function load() {
     const graphcms = new GraphQLClient(
       import.meta.env.VITE_CONTENT_API,
       {
@@ -10,7 +11,7 @@
     )
     const query = gql`
       {
-        polyworkUser(where: { username: "spences10" }) {
+        timelineUser(where: { username: "spences10" }) {
           id
           name
           username
@@ -27,7 +28,7 @@
             url
             altText
           }
-          polyworkUserBadges {
+          userBadges {
             name
           }
           activityDetails(orderBy: createdAt_DESC) {
@@ -46,20 +47,17 @@
         }
       }
     `
-    const variables = {
-      slug: context.page.params.slug,
-    }
-    const { polyworkUser } = await graphcms.request(query, variables)
+    const { timelineUser } = await graphcms.request(query)
     return {
       props: {
-        polyworkUser,
+        timelineUser,
       },
     }
   }
 </script>
 
 <script>
-  export let polyworkUser
+  export let timelineUser
   let {
     name,
     username,
@@ -70,9 +68,9 @@
     bio,
     banner,
     avatar,
-    polyworkUserBadges,
+    userBadges,
     activityDetails,
-  } = polyworkUser
+  } = timelineUser
 </script>
 
 <img alt={banner.altText} src={banner.url} class="h-96 w-full" />
@@ -105,9 +103,9 @@
             <li>{location}</li>
           </ul>
           <div>
-            {#if polyworkUserBadges}
+            {#if userBadges}
               <div class="flex flex-wrap mt-5 break-words relative">
-                {#each polyworkUserBadges as { name }}
+                {#each userBadges as { name }}
                   <div
                     class="border rounded-full font-medium mr-2 mb-2 py-2 px-4"
                   >
