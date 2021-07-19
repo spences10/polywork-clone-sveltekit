@@ -1,6 +1,6 @@
 <script context="module">
+  import Activities from '$lib/activities.svelte'
   import Basics from '$lib/basics.svelte'
-  import { format } from 'date-fns'
   import { gql, GraphQLClient } from 'graphql-request'
 
   export async function load() {
@@ -97,32 +97,6 @@
     <div class="divider opacity-10 mb-10" />
 
     <!-- Activities List -->
-    {#if activityDetails}
-      {#each activityDetails as activity}
-        <section class="border mb-4 card shadow">
-          <div class="card-body">
-            {#if activity.activityTags}
-              {#each activity.activityTags as { name, badgeColour }}
-                <div class="flex flex-wrap break-words relative">
-                  <div
-                    class="border font-semibold mr-2 text-sm mb-2 w-auto py-2 px-4"
-                  >
-                    <p style="color:{badgeColour.hex}">{name}</p>
-                  </div>
-                </div>
-              {/each}
-            {/if}
-            <p class="font-semibold mb-5 opacity-75">
-              {format(new Date(activity.date), 'do MMM yyy')}
-            </p>
-            <div class="prose">
-              {@html activity.description.html}
-            </div>
-
-            <div />
-          </div>
-        </section>
-      {/each}
-    {/if}
+    <Activities {activityDetails} />
   </div>
 </article>
