@@ -13,18 +13,18 @@
     "@sveltejs/adapter-vercel": "1.0.0-next.26",
     "@sveltejs/kit": "next",
     "@tailwindcss/typography": "0.4.1",
-    "autoprefixer": "10.3.0",
-    "cssnano": "5.0.6",
-    "daisyui": "1.9.0",
-    "date-fns": "2.22.1",
+    "autoprefixer": "10.3.1",
+    "cssnano": "5.0.7",
+    "daisyui": "1.11.0",
+    "date-fns": "2.23.0",
     "graphql": "15.5.1",
-    "graphql-request": "3.4.0",
-    "postcss": "8.3.5",
+    "graphql-request": "3.5.0",
+    "postcss": "8.3.6",
     "postcss-load-config": "3.1.0",
-    "prettier": "2.2.1",
+    "prettier": "2.3.2",
     "prettier-plugin-svelte": "2.3.1",
-    "svelte": "3.38.3",
+    "svelte": "3.42.1",
     "svelte-preprocess": "4.7.4",
-    "tailwindcss": "2.2.4"
+    "tailwindcss": "2.2.7"
   }
 }
