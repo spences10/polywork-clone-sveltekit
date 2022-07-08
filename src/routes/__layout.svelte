@@ -1,7 +1,7 @@
 <script context="module">
-	import '../app.postcss';
+  import '../app.postcss'
 </script>
 
 <main>
-	<slot />
+  <slot />
 </main>
